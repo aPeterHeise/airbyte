@@ -38,7 +38,7 @@ class SourceMariadb(Source):
         try:
 
             conn = mariadb.connect(
-                user = config["user"],
+                user = config["username"],
                 password = config["password"],
                 host = config["host"],
                 port = config["port"])
