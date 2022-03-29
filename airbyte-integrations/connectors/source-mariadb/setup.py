@@ -6,6 +6,7 @@
 from setuptools import find_packages, setup
 
 MAIN_REQUIREMENTS = [
+    "mariadb==1.0.10",
     "airbyte-cdk~=0.1",
 ]
 
