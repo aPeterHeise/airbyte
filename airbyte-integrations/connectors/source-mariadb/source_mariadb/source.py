@@ -4,6 +4,7 @@
 
 
 import json
+import mariadb
 from datetime import datetime
 from typing import Dict, Generator
 
@@ -35,7 +36,21 @@ class SourceMariadb(Source):
         :return: AirbyteConnectionStatus indicating a Success or Failure
         """
         try:
-            # Not Implemented
+
+            conn = mariadb.connect(
+                user="db_user",
+                password="db_user_password",
+                host="192.0.2.1",
+                port=3306)
+
+            # Instantiate Cursor
+            cur = conn.cursor()
+
+            # Dummy query
+            cur.execute("SELECT 1")
+
+            # Close Connection
+            conn.close()
 
             return AirbyteConnectionStatus(status=Status.SUCCEEDED)
         except Exception as e:
