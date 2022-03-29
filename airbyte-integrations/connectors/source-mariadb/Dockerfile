@@ -30,6 +30,10 @@ RUN echo "Etc/UTC" > /etc/timezone
 # bash is installed for more convenient debugging.
 RUN apk --no-cache add bash
 
+# install MariaDB dependency
+RUN apk add --no-cache mariadb-connector-c mariadb-dev \
+    && rm -f /var/cache/apk/*
+
 # copy payload code only
 COPY main.py ./
 COPY source_mariadb ./source_mariadb
