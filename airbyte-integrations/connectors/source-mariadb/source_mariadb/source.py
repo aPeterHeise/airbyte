@@ -77,16 +77,31 @@ class SourceMariadb(Source):
         """
         streams = []
 
-        stream_name = "TableName"  # Example
         json_schema = {  # Example
             "$schema": "http://json-schema.org/draft-07/schema#",
             "type": "object",
             "properties": {"columnName": {"type": "string"}},
         }
 
-        # Not Implemented
+        conn = mariadb.connect(
+            user = config["username"],
+            password = config["password"],
+            database = config["database"],
+            host = config["host"],
+            port = config["port"],
+            ssl = config["ssl"]
+        )
 
-        streams.append(AirbyteStream(name=stream_name, json_schema=json_schema))
+        # Instantiate Cursor
+        cur = conn.cursor()
+
+        # Get all tables in database
+        cur.execute("SHOW tables")
+
+        # Print Result-set
+        for (table_name) in cur:
+            streams.append(AirbyteStream(name=f"{table_name}", json_schema=json_schema))
+
         return AirbyteCatalog(streams=streams)
 
     def read(
