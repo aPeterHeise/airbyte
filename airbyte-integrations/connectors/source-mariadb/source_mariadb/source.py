@@ -41,7 +41,9 @@ class SourceMariadb(Source):
                 user = config["username"],
                 password = config["password"],
                 host = config["host"],
-                port = config["port"])
+                port = config["port"],
+                ssl = config["ssl"]
+            )
 
             # Instantiate Cursor
             cur = conn.cursor()
