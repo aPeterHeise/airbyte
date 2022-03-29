@@ -9,6 +9,11 @@ RUN apk --no-cache upgrade \
     && pip install --upgrade pip \
     && apk --no-cache add tzdata build-base
 
+# install MariaDB dependency
+RUN apk add --no-cache mariadb-connector-c \
+    && rm -f /var/cache/apk/*
+
+RUN find / | grep -i maria
 
 COPY setup.py ./
 # install necessary packages to a temporary folder
