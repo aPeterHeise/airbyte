@@ -1,7 +1,7 @@
 # Mariadb Source
 
 This is the repository for the Mariadb source connector, written in Python.
-For information about how to use this connector within Airbyte, see [the documentation](https://docs.airbyte.io/integrations/sources/mariadb).
+For information about how to use this connector within Airbyte, see [the documentation](https://docs.airbyte.io/integrations/sources/mariadb). It is based on the MariaDB python package, see [their documentation](https://mariadb-corporation.github.io/mariadb-connector-python/module.html) for further features.
 
 ## Local development
 
