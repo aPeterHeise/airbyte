@@ -38,10 +38,10 @@ class SourceMariadb(Source):
         try:
 
             conn = mariadb.connect(
-                user="db_user",
-                password="db_user_password",
-                host="192.0.2.1",
-                port=3306)
+                user = config["user"],
+                password = config["password"],
+                host = config["host"],
+                port = config["port"])
 
             # Instantiate Cursor
             cur = conn.cursor()
