@@ -1,15 +1,65 @@
 {
-  "documentationUrl": "https://docsurl.com",
+  "documentationUrl": "https://docs.airbyte.com/integrations/sources/mariadb",
   "connectionSpecification": {
     "$schema": "http://json-schema.org/draft-07/schema#",
     "title": "Mariadb Spec",
     "type": "object",
-    "required": ["fix-me"],
+    "required": ["host", "port", "database", "username"],
     "additionalProperties": false,
     "properties": {
-      "fix-me": {
+      "host": {
+        "title": "Host",
+        "description": "Hostname of the database.",
         "type": "string",
-        "description": "describe me"
+        "order": 0
+      },
+      "port": {
+        "title": "Port",
+        "description": "Port of the database.",
+        "type": "integer",
+        "minimum": 0,
+        "maximum": 65536,
+        "default": 5432,
+        "examples": ["5432"],
+        "order": 1
+      },
+      "database": {
+        "title": "DB Name",
+        "description": "Name of the database.",
+        "type": "string",
+        "order": 2
+      },
+      "schemas": {
+        "title": "Schemas",
+        "description": "The list of schemas to sync from.",
+        "type": "array",
+        "items": {
+          "type": "string"
+        },
+        "minItems": 0,
+        "uniqueItems": true,
+        "default": ["public"],
+        "order": 3
+      },
+      "username": {
+        "title": "User",
+        "description": "Username to use to access the database.",
+        "type": "string",
+        "order": 4
+      },
+      "password": {
+        "title": "Password",
+        "description": "Password associated with the username.",
+        "type": "string",
+        "airbyte_secret": true,
+        "order": 5
+      },
+      "ssl": {
+        "title": "Connect using SSL",
+        "description": "Encrypt client/server communications for increased security.",
+        "type": "boolean",
+        "default": false,
+        "order": 6
       }
     }
   }
